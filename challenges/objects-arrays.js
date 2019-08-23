@@ -14,21 +14,47 @@
 
 // Using your dinosaur objects, log answers to these questions:
 
+const dino1 = {
+  'name': `Tryannosaurus`,
+  'diet': `Carnivorous`,
+  'weight': `7000kg`,
+  'length': `12m`,
+  'period': `Late Cretaceous`,
+  roar() {
+  return ("RAWERSRARARWERSARARARRRR!");
+  }
+};
+
+const dino2 = {
+  'name': `Stegosaurus`,
+  'diet': `Herbivorous`,
+  'weight': `2000kg`,
+  'length': `9m`,
+  'period': `Late Jurassic`,
+};
+
+const dino3 = {
+  'name': `Velociraptor`,
+  'diet': `Carnivorous`,
+  'weight': `15kg`,
+  'length': `1.8m`,
+  'period': `Late Cretaceous`,
+};
 // How much did tyrannosaurus weigh?
-console.log();
+console.log(dino1.weight);
 
 // What was the diet of a velociraptor?
-console.log();
+console.log(dino3.diet);
 
 // How long was a stegosaurus?
-console.log();
+console.log(dino2.length);
 
 // What time period did tyrannosaurus live in?
-console.log();
+console.log(dino1.period);
 
 
 // Create a new roar method for the tyrannosaurus.  When called, return "RAWERSRARARWERSARARARRRR!" Log the result.
-console.log();
+console.log(dino1.roar());
 
 
 // ==== Arrays ====
@@ -91,6 +117,12 @@ The zoos want to display both the scientific name and the animal name in front o
 
 */
 const displayNames = [];
+
+
+const animalNames = zooAnimals.forEach(({animal_name, scientific_name}) => {
+  displayNames.push(`Name: ${animal_name}, Scientific: ${scientific_name}`);
+});
+
 console.log(displayNames);
 
 /* Request 2: .map()
@@ -99,7 +131,10 @@ The zoos need a list of all their animal's names (animal_name only) converted to
 
 */
 
-const lowCaseAnimalNames = [];
+// const lowCaseAnimalNames = [];
+
+const lowCaseAnimalNames = zooAnimals.map(names => names.animal_name.toLowerCase());
+
 console.log(lowCaseAnimalNames);
 
 /* Request 3: .filter() 
@@ -107,7 +142,10 @@ console.log(lowCaseAnimalNames);
 The zoos are concerned about animals with a lower population count. Using filter, create a new array of objects called lowPopulationAnimals which contains only the animals with a population less than 5.
 
 */
-const lowPopulationAnimals = [];
+// const lowPopulationAnimals = [];
+
+const lowPopulationAnimals = zooAnimals.filter(name => name.population < 5);
+
 console.log(lowPopulationAnimals);
 
 /* Request 4: .reduce() 
@@ -115,7 +153,9 @@ console.log(lowPopulationAnimals);
 The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
 
 */
-const populationTotal = 0;
+
+const populationTotal = zooAnimals.reduce((acc, name) => acc + name.population, 0);
+
 console.log(populationTotal);
 
 
